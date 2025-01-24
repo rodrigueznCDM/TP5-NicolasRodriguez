@@ -8,7 +8,8 @@ import random
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Mercury"
+SCREEN_TITLE = "Mercury - Redstone 2"
+rocket_color = arcade.color.ANTIQUE_WHITE
 
 
 class MyGame(arcade.Window):
@@ -29,29 +30,52 @@ class MyGame(arcade.Window):
 
             arcade.draw_circle_filled(x, y, radius, color)
 
-    def center_dust(self):
-        self.generate_circles(24, 350, 450, 60, 190, arcade.color.ASH_GREY)
+    def dust(self):
+        self.generate_circles(18, 370, 430, 50, 160, arcade.color.ASH_GREY)
 
-    def dark_center_dust(self):
-        self.generate_circles(10, 380, 420, 60, 190, arcade.color.TROLLEY_GREY)
+    def floor_dust(self):
+        self.generate_circles(12, 340, 460, 50, 70, arcade.color.ASH_GREY)
+
+    def dark_dust(self):
+        self.generate_circles(6, 390, 410, 50, 140, arcade.color.TROLLEY_GREY)
 
     def engine_fire_yellow(self):
-        self.generate_circles(12, 350, 450, 140, 240, arcade.color.SCHOOL_BUS_YELLOW)
+        self.generate_circles(18, 370, 430, 120, 200, arcade.color.SCHOOL_BUS_YELLOW)
 
     def engine_fire_orange(self):
-        self.generate_circles(8, 350, 450, 180, 230, arcade.color.BURNT_ORANGE)
+        self.generate_circles(6, 390, 410, 100, 200, arcade.color.BURNT_ORANGE)
 
     def on_draw(self):
         """
-        Crée une image représentent la fusé Mercury
+        Crée une image représentent la fusé Redstone 2 du Projet Mercury
         """
         self.clear()
 
-        arcade.draw_lrbt_rectangle_filled(0, 800, 0, 50, arcade.color.BATTLESHIP_GREY)
-        self.center_dust()
-        self.dark_center_dust()
+        # Poussière du moteur
+        self.dust()
+        self.floor_dust()
+        self.dark_dust()
         self.engine_fire_yellow()
         self.engine_fire_orange()
+
+        # Le sol va par-dessus les cercles pour faire comme si la fumée touche le sol
+        arcade.draw_lrbt_rectangle_filled(0, 800, 0, 50, arcade.color.BATTLESHIP_GREY)
+
+        # Formes autour du moteur
+        arcade.draw_lrbt_rectangle_filled(330, 470, 200, 220, rocket_color)
+        arcade.draw_lrbt_rectangle_filled(350, 450, 220, 235, rocket_color)
+        arcade.draw_triangle_filled(350, 235, 450, 235, 400, 280, rocket_color)
+
+        # Sortie du moteur
+        arcade.draw_ellipse_filled(400, 210, 70, 18, arcade.color.SMOKY_BLACK)
+
+        # Corps de la fusée
+        arcade.draw_lrbt_rectangle_filled(375, 425, 250, 500, rocket_color)
+        arcade.draw_line(375, 330, 425, 330, arcade.color.SMOKY_BLACK, 5)
+        arcade.draw_line(375, 420, 425, 420, arcade.color.SMOKY_BLACK, 5)
+
+        # Écriture sur la fusée
+        arcade.draw_text()
 
     def on_update(self, delta_time):
         """
