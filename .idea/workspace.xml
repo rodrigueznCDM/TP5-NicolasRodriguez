@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5507a7c7-66ad-4621-a9a7-538056bb4884" name="Changes" comment="Période 1">
+    <list default="true" id="5507a7c7-66ad-4621-a9a7-538056bb4884" name="Changes" comment="Période 3 - 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -86,11 +86,20 @@
       <option name="project" value="LOCAL" />
       <updated>1737402673213</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Période 3 - 4">
+      <option name="closed" value="true" />
+      <created>1737738555940</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737738555940</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Période 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Période 1" />
+    <MESSAGE value="Période 3 - 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Période 3 - 4" />
   </component>
 </project>
