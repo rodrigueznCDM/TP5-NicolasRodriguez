@@ -9,8 +9,10 @@ import random
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Mercury - Redstone 2"
-rocket_color = arcade.color.ANTIQUE_WHITE
 
+base_rocket_color = arcade.color.ANTIQUE_WHITE
+contrast_rocket_color = arcade.color.SMOKY_BLACK
+detail_rocket_color = arcade.color.RED
 
 class MyGame(arcade.Window):
     """
@@ -43,45 +45,65 @@ class MyGame(arcade.Window):
 
     @staticmethod
     def rocket_body():
-        arcade.draw_lrbt_rectangle_filled(375, 425, 250, 500, rocket_color)
-        arcade.draw_line(375, 340, 425, 340, arcade.color.SMOKY_BLACK, 5)
-        arcade.draw_line(375, 420, 425, 420, arcade.color.SMOKY_BLACK, 5)
+        arcade.draw_lrbt_rectangle_filled(375, 425, 250, 500, base_rocket_color)
+        arcade.draw_line(375, 500, 425, 500, contrast_rocket_color, 5)
+        arcade.draw_line(375, 420, 425, 420, contrast_rocket_color, 5)
+        arcade.draw_line(375, 340, 425, 340, contrast_rocket_color, 5)
 
     @staticmethod
     def engine():
-        arcade.draw_lrbt_rectangle_filled(330, 470, 200, 220, rocket_color)
-        arcade.draw_lrbt_rectangle_filled(350, 450, 220, 235, rocket_color)
-        arcade.draw_triangle_filled(350, 235, 450, 235, 400, 280, rocket_color)
-        trapeze_points = [(359, 237), (441, 237), (420, 257), (380, 257)]
-        arcade.draw_polygon_filled(trapeze_points, arcade.color.SMOKY_BLACK)
-        arcade.draw_ellipse_filled(400, 210, 70, 18, arcade.color.SMOKY_BLACK)
+        arcade.draw_lrbt_rectangle_filled(330, 470, 200, 220, base_rocket_color)
+        arcade.draw_lrbt_rectangle_filled(350, 450, 220, 235, base_rocket_color)
+
+        arcade.draw_triangle_filled(350, 235, 450, 235, 400, 280, base_rocket_color)
+        trapeze_points = [(359, 237), (441, 237), (420, 252), (380, 252)]
+        arcade.draw_polygon_filled(trapeze_points, contrast_rocket_color)
+
+        arcade.draw_ellipse_filled(400, 210, 70, 18, contrast_rocket_color)
 
     @staticmethod
     def vertical_writing():
-        red = arcade.color.RED
         size = 10
         x = 395
 
-        arcade.draw_text("U", x, 400, red, size)
-        arcade.draw_text("N", x, 390, red, size)
-        arcade.draw_text("I", x, 380, red, size)
-        arcade.draw_text("T", x, 370, red, size)
-        arcade.draw_text("E", x, 360, red, size)
-        arcade.draw_text("D", x, 350, red, size)
-        arcade.draw_text("S", x, 320, red, size)
-        arcade.draw_text("T", x, 310, red, size)
-        arcade.draw_text("A", x, 300, red, size)
-        arcade.draw_text("T", x, 290, red, size)
-        arcade.draw_text("E", x, 280, red, size)
-        arcade.draw_text("S", x, 270, red, size)
+        arcade.draw_text("U", x, 400, detail_rocket_color, size)
+        arcade.draw_text("N", x, 390, detail_rocket_color, size)
+        arcade.draw_text("I", x, 380, detail_rocket_color, size)
+        arcade.draw_text("T", x, 370, detail_rocket_color, size)
+        arcade.draw_text("E", x, 360, detail_rocket_color, size)
+        arcade.draw_text("D", x, 350, detail_rocket_color, size)
+        arcade.draw_text("S", x, 320, detail_rocket_color, size)
+        arcade.draw_text("T", x, 310, detail_rocket_color, size)
+        arcade.draw_text("A", x, 300, detail_rocket_color, size)
+        arcade.draw_text("T", x, 290, detail_rocket_color, size)
+        arcade.draw_text("E", x, 280, detail_rocket_color, size)
+        arcade.draw_text("S", x, 270, detail_rocket_color, size)
 
     @staticmethod
     def stripes():
-        arcade.draw_arc_filled(400, 500, 50, 10, arcade.color.SMOKY_BLACK, 0, 180)
+        arcade.draw_line(420, 490, 420, 500, contrast_rocket_color, 10)
+        arcade.draw_line(400, 490, 400, 500, contrast_rocket_color, 10)
+        arcade.draw_line(380, 490, 380, 500, contrast_rocket_color, 10)
+
+        arcade.draw_line(390, 430, 390, 490, contrast_rocket_color, 10)
+        arcade.draw_line(410, 430, 410, 490, contrast_rocket_color, 10)
+
+        arcade.draw_line(380, 420, 380, 430, contrast_rocket_color, 10)
+        arcade.draw_line(400, 420, 400, 430, contrast_rocket_color, 10)
+        arcade.draw_line(420, 420, 420, 430, contrast_rocket_color, 10)
 
     @staticmethod
     def rocket_nose():
-        pass
+        trapeze_points = [(375, 502), (425, 502), (415, 520), (385, 520)]
+        arcade.draw_polygon_filled(trapeze_points, arcade.color.SMOKY_BLACK)
+
+        arcade.draw_line(400, 520, 400, 560, detail_rocket_color, 3)
+        arcade.draw_line(387, 520, 400, 560, detail_rocket_color, 3)
+        arcade.draw_line(413, 520, 400, 560, detail_rocket_color, 3)
+        arcade.draw_line(400, 550, 400, 570, detail_rocket_color, 6)
+        arcade.draw_line(400,570, 400, 580, detail_rocket_color, 2)
+
+        arcade.draw_arc_filled(400, 519, 30, 15, contrast_rocket_color, 0, 180)
 
     def on_draw(self):
         """
@@ -95,11 +117,11 @@ class MyGame(arcade.Window):
         # Le sol va par-dessus les cercles pour faire comme si la fumée touche le sol
         self.floor()
 
-        # Corps de la fusée
-        self.rocket_body()
-
         # Moteur
         self.engine()
+
+        # Corps de la fusée
+        self.rocket_body()
 
         # Écriture sur la fusée
         self.vertical_writing()
